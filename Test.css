@@ -1,0 +1,155 @@
+body {
+  font: 13px/20px "Open Sans", Tahoma, Verdana, sans-serif;
+  color: #a7a599;
+  /* background: linear-gradient(red, blue); */
+  height: 400px;
+}
+
+.Modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("./Frontend/Resources/Images/Background-Modal.svg");
+}
+
+.Form {
+  position: relative;
+  margin: 100px auto;
+  width: 370px;
+  height: 315px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.Form h1 {
+  line-height: 55px;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Open Sans", sans-serif;
+  color: #fff;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  margin-top: 0px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.Form .Field {
+  position: relative;
+  margin: 0 50px;
+}
+::-webkit-input-placeholder {
+  color: #ffffff;
+  font-family: "Open Sans";
+}
+
+.Form input[type="password"] {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 15px 10px 55px;
+  position: relative;
+  width: 200px;
+  margin-top: 15px;
+  height: 24px;
+
+  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  color: rgb(255, 255, 255);
+  transition: color 0.3s ease-out;
+}
+
+.Form .Field i {
+  font-size: 18px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  height: 44px;
+  width: 44px;
+  color: #f7f3eb;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-top: 15px;
+  line-height: 44px;
+  transition: all 0.3s ease-out;
+  pointer-events: none;
+}
+
+.Password-Input-Button {
+  width: 200px;
+  height: 40px;
+  margin-left: 85px;
+  margin-top: 15px;
+  color: #fff;
+  padding: 10px 25px;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  outline: none;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  background: rgb(0, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgb(0, 187, 201) 0%,
+    rgb(2, 234, 251) 100%
+  );
+}
+.Password-Input-Button:hover {
+  color: #fff;
+  background: rgb(33, 193, 233);
+  box-shadow: none;
+}
+.Password-Input-Button:before,
+.Password-Input-Button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #f00990;
+  box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003,
+    4px 4px 5px 0px #0002;
+  transition: 400ms ease all;
+}
+.Password-Input-Button:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+.Password-Input-Button:hover:before,
+.Password-Input-Button:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}

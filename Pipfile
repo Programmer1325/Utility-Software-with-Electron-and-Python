@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+zxcvbn = "*"
+cryptography = "*"
+pysafebrowsing = "*"
+unshortenit = "*"
+psutil = "*"
+requests = "*"
+convtools = "*"
+demjson = "*"
+
+[dev-packages]
+flake8 = "*"
+autopep8 = "*"
+
+[requires]
+python_version = "3.10"

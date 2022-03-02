@@ -1,0 +1,1 @@
+exe,pif,msi,msp,application,gadget,scr,hta,cpl,msc,jar,bat,vb,vbs,vbe,ws,wsf,ps,msh,scf,lnk,inf,reg

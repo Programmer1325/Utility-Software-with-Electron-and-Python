@@ -1,0 +1,9 @@
+~/Library/Caches/Google/Chrome/Default/Cache
+~/Library/Caches/Google/Chrome/Default/Code Cache/js
+~/Library/Caches/Google/Chrome/Default/Code Cache/wasm
+~/Library/Application Support/Google/Chrome/Default/History
+~/Library/Application Support/Google/Chrome/Default/History-journal
+~/Library/Application Support/Google/Chrome/Default/Cookies
+~/Library/Application Support/Google/Chrome/Default/Cookies-journal
+~/Library/Application Support/Google/Chrome/Default/Bookmarks
+~/Library/Application Support/Google/Chrome/Default/Bookmarks.bak

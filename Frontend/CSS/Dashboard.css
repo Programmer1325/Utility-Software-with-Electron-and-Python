@@ -1,0 +1,608 @@
+/** Global Contents */
+
+@font-face {
+  font-family: "Poppins-Light";
+  src: url("../Resources/Fonts/Poppins-ExtraLight.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Montserrat-Thin";
+  src: url("../Resources/Fonts/Montserrat-Thin.woff2") format("woff2");
+}
+
+* {
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins-Light", sans-serif;
+}
+
+::-webkit-scrollbar {
+  height: 0px;
+  background: transparent;
+}
+
+body {
+  background-image: url("../Resources/Images/Background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 0.5fr;
+  gap: 50px 50px;
+  grid-template-areas: "Sidebar Box-1 Box-2 Box-3" "Sidebar Box-4 Box-4 Box-3";
+}
+.Box-1 {
+  grid-area: Box-1;
+}
+.Box-2 {
+  grid-area: Box-2;
+}
+.Box-3 {
+  grid-area: Box-3;
+}
+.Box-4 {
+  grid-area: Box-4;
+}
+
+/** Sidebar */
+
+.Sidebar {
+  grid-area: Sidebar;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  max-width: 200px;
+  min-width: 175px;
+  background-color: rgba(50, 0, 107, 0.233);
+  backdrop-filter: blur(15px);
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  filter: drop-shadow(10px 0 6px rgba(0, 0, 0, 0.25));
+}
+
+.Chart-Sidebar {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+  margin-top: 15px;
+  backdrop-filter: blur(3px);
+}
+
+.Chart-Sidebar a {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 40px;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.Chart-Sidebar .Icons {
+  font-size: 2rem;
+  pointer-events: none;
+  opacity: 0.25;
+  transition: 0.25s;
+}
+
+.Chart-Sidebar li.active a .Icons {
+  opacity: 1;
+}
+
+#Marker {
+  position: absolute;
+  top: 0;
+  transition: 0.5s;
+  z-index: 1;
+}
+
+#Marker::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 40px;
+  border-radius: 8px;
+  background: #5da6ff;
+  box-shadow: 0 0 15px #5da6ff, 0 0 30px #5da6ff, 0 0 45px #5da6ff,
+    0 0 60px #5da6ff;
+}
+
+.Chart-Sidebar li:nth-child(1).active ~ #Marker::before {
+  background: #ff0;
+  box-shadow: 0 0 15px #ff0, 0 0 30px #ff0, 0 0 45px #ff0, 0 0 60px #ff0;
+}
+
+.Chart-Sidebar li:nth-child(2).active ~ #Marker::before {
+  background: #00ff55;
+  box-shadow: 0 0 15px #00ff55, 0 0 30px #00ff55, 0 0 45px #00ff55,
+    0 0 60px #00ff55;
+}
+
+.Chart-Sidebar li:nth-child(3).active ~ #Marker::before {
+  background: #5da6ff;
+  box-shadow: 0 0 15px #5da6ff, 0 0 30px #5da6ff, 0 0 45px #5da6ff,
+    0 0 60px #5da6ff;
+}
+
+.Chart-Sidebar li:nth-child(4).active ~ #Marker::before {
+  background: #db2777;
+  box-shadow: 0 0 15px #db2777, 0 0 30px #db2777, 0 0 45px #db2777,
+    0 0 60px #db2777;
+}
+
+.Chart-Sidebar li:nth-child(5).active ~ #Marker::before {
+  background: #ef4444;
+  box-shadow: 0 0 15px #ef4444, 0 0 30px #ef4444, 0 0 45px #ef4444,
+    0 0 60px #ef4444;
+}
+
+/** Segments and Boxes */
+
+.Segment {
+  width: 331px;
+  height: 100%;
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: flex-start;
+}
+
+.Box {
+  width: 330px;
+  height: 250px;
+  display: flex;
+  background: rgba(16, 49, 75, 0.432);
+  box-shadow: 0px 4px 42px rgba(0, 0, 0, 0.6);
+  border-radius: 22px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+  background-color: rgba(16, 49, 75, 0.342);
+  backdrop-filter: blur(5px);
+  position: relative;
+}
+
+.Vertical {
+  height: 500px;
+  align-content: flex-start;
+  transition: height 1s;
+}
+
+.Vertical-with-Analysed {
+  height: 777px;
+}
+
+.Horizontal-Segment {
+  position: relative;
+  align-self: center;
+  justify-self: baseline;
+  bottom: 45px;
+}
+
+.Horizontal {
+  align-self: center;
+  width: 750px;
+  height: 400px;
+  max-height: 46vh;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.Password-Section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  margin: 15px;
+}
+
+/** Buttons */
+
+.Virus-Button {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  margin: 20px;
+}
+
+.Virus-Button a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  color: #fff;
+  z-index: 1;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.5s;
+  backdrop-filter: blur(15px);
+}
+
+.Virus-Button:hover a {
+  letter-spacing: 3px;
+}
+
+.Virus-Button a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(45deg) translateX(0);
+  transition: 0.5s;
+}
+
+.Virus-Button:hover a::before {
+  transform: skewX(45deg) translateX(200%);
+}
+
+.Virus-Button::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  width: 30px;
+  height: 10px;
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+  background: red;
+  box-shadow: 0 0 5px red, 0 0 15px red, 0 0 30px red, 0 0 60px red;
+}
+
+.Virus-Button:hover::before {
+  bottom: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+
+.Virus-Button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -5px;
+  width: 30px;
+  height: 10px;
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+  background: red;
+  box-shadow: 0 0 5px red, 0 0 15px red, 0 0 30px red, 0 0 60px red;
+}
+
+.Virus-Button:hover::after {
+  top: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+
+.Junk-Button {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  margin: 20px;
+}
+
+.Junk-Button a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  color: #fff;
+  z-index: 1;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.5s;
+  backdrop-filter: blur(15px);
+}
+
+.Junk-Button:hover a {
+  letter-spacing: 3px;
+}
+
+.Junk-Button a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(45deg) translateX(0);
+  transition: 0.5s;
+}
+
+.Junk-Button:hover a::before {
+  transform: skewX(45deg) translateX(200%);
+}
+
+.Junk-Button::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  width: 30px;
+  height: 10px;
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+  background: #6ee138;
+  box-shadow: 0 0 5px #6ee138, 0 0 15px #6ee138, 0 0 30px #6ee138,
+    0 0 60px #6ee138;
+}
+
+.Junk-Button:hover::before {
+  bottom: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+
+.Junk-Button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -5px;
+  width: 30px;
+  height: 10px;
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+  background: #6ee138;
+  box-shadow: 0 0 5px #6ee138, 0 0 15px #6ee138, 0 0 30px #6ee138,
+    0 0 60px #6ee138;
+}
+
+.Junk-Button:hover::after {
+  top: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30pc;
+  transition-delay: 0.5s;
+}
+
+.Password-Btn {
+  position: relative;
+  display: inline-block;
+  padding: 15px 20px;
+  border: 2px solid #74b1ff;
+  margin: 10px;
+  text-transform: uppercase;
+  background: linear-gradient(transparent, #0076);
+  font-weight: 600;
+  color: #fff;
+  transition: 0.5s;
+  transition-delay: 0s;
+  cursor: pointer;
+}
+
+.Password-Btn:hover {
+  transition-delay: 1.5s;
+  color: #000;
+  box-shadow: 0 0 10px #74b1ff, 0 0 20px #74b1ff, 0 0 40px #74b1ff,
+    0 0 80px #74b1ff, 0 0 160px #74b1ff;
+}
+
+.Password-Btn::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 2px;
+  background: #74b1ff;
+  box-shadow: 5px -8px 0 #74b1ff, 5px 8px 0 #74b1ff;
+  transition: width 0.5s, left 0.5s, height 0.5s, box-shadow 0.5s;
+  transition-delay: 1s, 0.5s, 0s, 0s;
+}
+
+.Password-Btn:hover::before {
+  width: 60%;
+  height: calc(100% + 5%);
+  left: -2px;
+  box-shadow: 5px 0 0 #74b1ff, 5px 0 0 #74b1ff;
+  transition-delay: 0s, 0.5s, 1s, 1s;
+}
+
+.Password-Btn::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 2px;
+  background: #74b1ff;
+  box-shadow: -5px -8px 0 #74b1ff, -5px 8px 0 #74b1ff;
+  transition: width 0.5s, right 0.5s, height 0.5s, box-shadow 0.5s;
+  transition-delay: 1s, 0.5s, 0s, 0s;
+}
+
+.Password-Btn:hover::after {
+  width: 60%;
+  height: calc(100% + 5%);
+  right: -2px;
+  box-shadow: -5px 0 0 #74b1ff, -5px 0 0 #74b1ff;
+  transition-delay: 0s, 0.5s, 1s, 1s;
+}
+
+/** Text*/
+
+.Sidebar-Heading {
+  font-size: 20px;
+  line-height: 36px;
+  color: #ffffff;
+  mix-blend-mode: soft-light;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 25px;
+  margin-left: 15px;
+  height: 25px;
+}
+
+.Sidebar-Subtext {
+  text-indent: 30px;
+  margin-top: 10px;
+}
+
+.Sidebar-Subtext a {
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.Selected {
+  text-decoration: underline;
+  text-decoration-color: rgb(213, 135, 135);
+  text-decoration-thickness: 5px;
+}
+
+.Defining-Text {
+  margin-bottom: 50px;
+  height: 0%;
+  color: #fff;
+  text-shadow: 0px 10px 11px rgb(0, 0, 0);
+}
+
+.Text {
+  color: greenyellow;
+  padding: 15px;
+  font-size: 25px;
+  text-shadow: 4px 3px 14px rgb(0, 0, 0);
+  text-align: center;
+}
+.Sub-Text {
+  font-family: "Montserrat-Thin", sans-serif;
+  font-size: 15px;
+  color: #fff;
+  animation: Fly-in 2s ease-out;
+}
+
+.Btn-Text {
+  position: relative;
+  z-index: 100;
+}
+
+.Sub-Heading {
+  color: yellow;
+  font-size: 15px;
+}
+
+.Result {
+  color: red;
+}
+
+.Virus-Found {
+  color: red;
+}
+
+/** Miscellaneous*/
+
+.Sidebar-List {
+  margin-top: 15px;
+}
+
+.Password-Input {
+  width: 250px;
+  height: 30px;
+  border: none;
+  mix-blend-mode: screen;
+  box-shadow: 0px 4px 45px 10px #be2c84;
+  border-radius: 15px;
+  text-indent: 10px;
+}
+
+.Analyser {
+  background: linear-gradient(90.73deg, #db438c 2.83%, #9f18df 95.76%);
+}
+
+.Generator {
+  background: linear-gradient(90.73deg, #86db43 2.83%, #df1818 95.76%);
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  overflow: scroll;
+  overflow-y: hidden;
+}
+
+.Analyse {
+  width: 40%;
+}
+
+.Password-Generator-Output {
+  color: #000;
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
+  z-index: 5;
+}
+
+.Analysed-Section {
+  display: none;
+}
+
+.Analysed-Section-Expanded {
+  display: block;
+}
+
+.Chart {
+  position: relative;
+  height: 35vh;
+  width: 650px;
+}
+
+/** Animation */
+@keyframes Fly-in {
+  0% {
+    transform: translateX(200%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "utilx",
+  "version": "1.0.0",
+  "description": "A Utility Software made with Electron and Python",
+  "main": "Initializer.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "UtilX",
+    "Python",
+    "Utility"
+  ],
+  "author": "Krishith Vadivel",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^15.3.0"
+  },
+  "dependencies": {
+    "finderjs": "^1.3.0",
+    "python-shell": "^3.0.1"
+  }
+}

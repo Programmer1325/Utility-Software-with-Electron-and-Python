@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./CSS/Dashboard.css" />
+    <link rel="stylesheet" href="./CSS/Toastify.css" />
+    <link rel="stylesheet" href="./CSS/Font_Awesome.css" />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <ul class="Sidebar">
+      <a class="Sidebar-Heading Selected" href="Dashboard.html">Dashboard</a>
+      <div class="Sidebar-Heading">Protection</div>
+      <ul class="Sidebar-List">
+        <li class="Sidebar-Subtext"><a href="">Malware Scan</a></li>
+        <li class="Sidebar-Subtext"><a href="">Adblocker</a></li>
+      </ul>
+
+      <div class="Sidebar-Heading">Privacy</div>
+      <ul class="Sidebar-List">
+        <li class="Sidebar-Subtext">
+          <a href="./Passwords.html">Passwords</a>
+        </li>
+        <li class="Sidebar-Subtext"><a href="">File Protector</a></li>
+      </ul>
+
+      <div class="Sidebar-Heading">Performance</div>
+      <ul class="Sidebar-List">
+        <li class="Sidebar-Subtext"><a href="">Optimise</a></li>
+        <li class="Sidebar-Subtext"><a href="">Maintenance</a></li>
+        <li class="Sidebar-Subtext"><a href="">Purge Large Files</a></li>
+      </ul>
+
+      <div class="Sidebar-Heading">Applications</div>
+      <ul class="Sidebar-List">
+        <li class="Sidebar-Subtext"><a href="">Uninstaller</a></li>
+        <li class="Sidebar-Subtext"><a href="">Updater</a></li>
+      </ul>
+    </ul>
+    <div class="Segment Box-1">
+      <p class="Defining-Text">Malware</p>
+      <div class="Box">
+        <p class="Text Virus-Found">
+          <span class="Big Virus-Found Text">1</span>Virus found
+        </p>
+        <div class="Virus-Button"><a href="Loader.html">Remove Virus</a></div>
+      </div>
+    </div>
+
+    <div class="Segment Box-2">
+      <p class="Defining-Text">Clean</p>
+      <div class="Box">
+        <p class="Text Clear-Space">
+          Clear<span class="Text" id="Size-of-Junk"></span>of junk
+        </p>
+        <div class="Junk-Button"><a href="#">Clear Junk</a></div>
+      </div>
+    </div>
+
+    <div class="Horizontal-Segment Box-4">
+      <div class="Box Horizontal">
+        <ul class="Chart-Sidebar">
+          <li>
+            <a class="Battery" href="#"
+              ><i class="fa-solid fa-battery-half Icons"></i
+            ></a>
+          </li>
+          <li>
+            <a class="RAM" href="#"><i class="fa-solid fa-memory Icons"></i></a>
+          </li>
+          <li class="active">
+            <a class="CPU" href="#"
+              ><i class="fa-solid fa-microchip Icons"></i
+            ></a>
+          </li>
+          <li>
+            <a class="Hard-Drive" href="#"
+              ><i class="fa-solid fa-hard-drive Icons"></i
+            ></a>
+          </li>
+          <li>
+            <a class="Network" href="#"
+              ><i class="fa-solid fa-wifi Icons"></i
+            ></a>
+          </li>
+          <div id="Marker"></div>
+        </ul>
+        <div class="Chart">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="Segment Box-3">
+      <p class="Defining-Text">Password</p>
+      <div class="Box Vertical" id="Vertical-Box">
+        <div class="Password-Section">
+          <p class="Text Sub-Heading">Password Analyser</p>
+          <input
+            class="Password-Input Analyser"
+            type="text"
+            id="Password-Analyser-Input"
+          />
+          <div class="Password-Btn" id="Analyse">
+            <span class="Btn-Text">Analyse</span>
+          </div>
+
+          <!-- * Analysed Section. Will be hidden except when called-->
+          <section class="Analysed-Section" id="Analysed-Section">
+            <p class="Text Sub-Text">Password Analysed</p>
+            <p class="Text Sub-Text">
+              Score: <span class="Result" id="Score"></span>
+            </p>
+            <p class="Text Sub-Text">
+              Guesses needed to crack the Password:
+              <span class="Result" id="Guesses"></span>
+            </p>
+            <p class="Text Sub-Text">
+              Time required to crack the Password:
+              <span class="Result" id="Time"></span>
+            </p>
+            <p class="Text Sub-Text">
+              Feedback:
+              <span class="Result" id="Feedback"></span>
+            </p>
+          </section>
+        </div>
+
+        <div class="Password-Section">
+          <p class="Text Sub-Heading">Password Generator</p>
+          <div class="Password-Input Generator">
+            <p class="Password-Generator-Output" id="Generated-Password"></p>
+          </div>
+          <div class="Password-Btn" id="Generate">
+            <span class="Btn-Text">Generate New Password</span>
+          </div>
+          <button class="Password-Btn" id="Copy">
+            <span class="Btn-Text">Copy Password</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./JS/Chart.js"></script>
+    <script src="./JS/Toastify.js"></script>
+
+    <script src="./JS/Dashboard.js"></script>
+  </body>
+</html>
