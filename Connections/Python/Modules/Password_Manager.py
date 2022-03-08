@@ -139,9 +139,9 @@ class Password_Manager:
             return 'Key already exists'
         else:
             if Path == '':
-                Path = Recent_ID + ',' + PasswordName
+                Path = '%s,%s' % (Path, PasswordName)
             else:
-                Path = Recent_ID + ',' + Path + ',' + PasswordName
+                Path = '%s,%s,%s' % (Recent_ID, Path, PasswordName)
 
             New_Path = '\n'.join(self.CSV_File) + '\n' + Path
             JSON_Password_Object[Recent_ID] = [
@@ -238,16 +238,3 @@ class Password_Manager:
             Writing_Paths.write(Encrypted_Path)
 
         print('Username and Password Deleted successfully')
-
-
-# with Password_Manager('hello') as c:
-    # c.Edit_Key(
-    #     'Github', '{"Username": "", "Password": ""}', 'Developer,Hosting')
-    # print(c.Read_Key('Gitlab'))
-    # print(c.Get_ID('Canvas2'))
-    # c.InitialPath('Developer,Hosting', 'Github')
-    # c.InitialPassword('Programmer1325', 'Github@132')
-    # print(c.Get_Path())
-    # print(c.Write_Password('Developer,Commit', 'Gitlab',
-    #                  'Gitlab', 'Gitlab@132'))
-    # c.Delete_Key('Facebook')

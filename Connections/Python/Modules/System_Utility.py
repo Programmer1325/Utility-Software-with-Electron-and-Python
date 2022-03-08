@@ -1,4 +1,3 @@
-from sys import argv
 from psutil import cpu_percent, virtual_memory, disk_usage, net_io_counters, sensors_battery
 from time import sleep
 

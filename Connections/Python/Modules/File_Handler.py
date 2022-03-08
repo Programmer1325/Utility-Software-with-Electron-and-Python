@@ -3,6 +3,7 @@ from cryptography.fernet import Fernet
 from base64 import urlsafe_b64encode as B64Encode
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from datetime import datetime
 
 
 class File_Handler:
@@ -34,11 +35,19 @@ class File_Handler:
     def __enter__(self):
         return self
 
-    def __exit__(self):
+    def __exit__(self, self1, self2, self3):
         pass
 
-    def File_Encrypter(self, File_Path):
-        # @param File_Path
+    def WriteHistory(self, File_Path, History):
+        Name = File_Path.split('/')[-1]
+
+        History = '%s with name %s on %s with path %s\n' % (
+            History, Name, datetime.now().strftime('%a %d %b %Y %I:%M %p'), File_Path)
+
+        with open('./Data/File_History.txt', 'a') as File_Open:
+            File_Open.write(History)
+
+    def Encrypt_File(self, File_Path):
         with open(File_Path, 'rb') as Open_File:
             Read_file = Open_File.read()
             # * Encrypt File
@@ -47,19 +56,25 @@ class File_Handler:
         with open(File_Path, 'wb+') as Write_Open_File:
             Write_Open_File.write(Encrypted_file)
 
-    def File_Decrypter(self, File_Path):
-        # @param File_Path
+        self.WriteHistory(File_Path, 'Encrypted')
+        return 'File Encrypted Successfully'
+
+    def Decrypt_File(self, File_Path):
         # * Open and Read file
         with open(File_Path, 'rb') as Open_File:
             Read_Encrypted_file = Open_File.read()
 
             # * Decrypt file
             Decrypted_file = self.Fernet_Key.decrypt(Read_Encrypted_file)
+
         # * Open and Write file
         with open(File_Path, 'wb+') as Write_Open_File:
             Write_Open_File.write(Decrypted_file)
 
-    def File_Remover(self, File_Path):
+        self.WriteHistory(File_Path, 'Decrypted')
+        return 'File Decrypted Successfully'
+
+    def Delete_File(self, File_Path):
         Key = Fernet.generate_key()
         Encryption_Key = Fernet(Key)
 
@@ -76,3 +91,6 @@ class File_Handler:
 
         # * Delete File
         remove(File_Path)
+
+        self.WriteHistory(File_Path, 'Deleted')
+        return 'File Deleted Successfully'

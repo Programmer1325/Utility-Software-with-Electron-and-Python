@@ -19,6 +19,8 @@
     "electron": "^15.3.0"
   },
   "dependencies": {
+    "@exuanbo/file-icons-js": "^3.3.0",
+    "dompurify": "^2.3.6",
     "finderjs": "^1.3.0",
     "python-shell": "^3.0.1"
   }

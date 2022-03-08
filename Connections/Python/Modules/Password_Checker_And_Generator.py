@@ -38,7 +38,7 @@ class Password:
 
     def Password_Analyser(self, Input_Password):
         # * Output
-        Result = zxcvbn(self.Input_Password)
+        Result = zxcvbn(Input_Password)
 
         # * Number of Guesses required
         Guesses = str(Result['guesses'])

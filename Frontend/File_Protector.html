@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Protector</title>
+    <link rel="stylesheet" href="./CSS/File_Protector.css" />
+    <link rel="stylesheet" href="./CSS/Toastify.css" />
+    <link rel="stylesheet" href="./CSS/Google_Icons.css" />
+    <link rel="stylesheet" href="./CSS/Shake.css" />
+    <link
+      href="../node_modules/@exuanbo/file-icons-js/dist/css/file-icons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <ul class="Sidebar">
+      <a class="Sidebar-Heading" href="./Dashboard.html">Dashboard</a>
+      <div class="Sidebar-Heading">Protection</div>
+      <ul class="Sidebar-List">
+        <li class="Sidebar-Subtext"><a href="">Malware Scan</a></li>
+        <li class="Sidebar-Subtext"><a href="">Adblocker</a></li>
+      </ul>
+
+      <div class="Sidebar-Heading">Privacy</div>
+      <ul class="Sidebar-List">
+        <li class="Sidebar-Subtext">
+          <a href="./Passwords.html">Passwords</a>
+        </li>
+        <li class="Sidebar-Subtext">
+          <a class="Selected" href="./File_Protector.html">File Protector</a>
+        </li>
+      </ul>
+
+      <div class="Sidebar-Heading">Performance</div>
+      <ul class="Sidebar-List">
+        <li class="Sidebar-Subtext"><a href="">Optimise</a></li>
+        <li class="Sidebar-Subtext"><a href="">Maintenance</a></li>
+        <li class="Sidebar-Subtext"><a href="">Purge Large Files</a></li>
+      </ul>
+
+      <div class="Sidebar-Heading">Applications</div>
+      <ul class="Sidebar-List">
+        <li class="Sidebar-Subtext"><a href="">Uninstaller</a></li>
+        <li class="Sidebar-Subtext"><a href="">Updater</a></li>
+      </ul>
+    </ul>
+
+    <div class="Horizontal-Segment Segment Box-1">
+      <p class="Defining-Text">Files</p>
+      <div class="Horizontal Box File-Uploader-Wrapper">
+        <form action="#" id="File-Input-Form">
+          <input class="file-input" type="file" name="file" hidden />
+          <span class="material-icons-round md-48">file_upload</span>
+          <p>Browse File to Upload or Drag here</p>
+        </form>
+        <section class="Uploaded-Content" id="Uploaded-Content">
+          <li class="row" id="Default-content">
+            <div class="content">
+              <div class="details">
+                <span class="name">No files uploaded</span>
+              </div>
+            </div>
+          </li>
+        </section>
+      </div>
+    </div>
+
+    <div class="Horizontal-Segment Segment Box-2">
+      <p class="Defining-Text">Functions for File Manager</p>
+      <div class="Functionality Horizontal">
+        <ul class="Extra-Functionality">
+          <li id="Encrypt-File">
+            <a href="#"><span class="material-icons-outlined">lock</span></a>
+            <p class="Tooltip">Encrypt File</p>
+          </li>
+          <li id="Decrypt-File">
+            <a href="#">
+              <span class="material-icons-outlined">lock_open</span>
+            </a>
+            <p class="Tooltip">Decrypt File</p>
+          </li>
+          <li id="Delete-File">
+            <a href="#"><span class="material-icons-round">delete</span></a>
+            <p class="Tooltip">Delete File</p>
+          </li>
+          <li id="Share-E-File">
+            <a href="#">
+              <span class="material-icons-round">mark_email_read</span>
+            </a>
+            <p class="Tooltip">Share Encrypted File</p>
+          </li>
+          <li id="Share-D-File">
+            <a href="#">
+              <span class="material-icons-round">unsubscribe</span>
+            </a>
+            <p class="Tooltip">Share Decrypted File</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="Segment Box-3">
+      <p class="Defining-Text">Password Utilities</p>
+      <div class="Box Vertical File-Uploader-Wrapper History-Box">
+        <section class="Uploaded-Content" id="Uploaded-Content-history">
+          <li class="row" id="Default-content-history">
+            <div class="content">
+              <div class="details">
+                <span class="name">No History</span>
+              </div>
+            </div>
+          </li>
+        </section>
+      </div>
+    </div>
+
+    <div class="Password-Modal" id="PasswordModalID">
+      <div class="Form">
+        <h1>
+          Enter Password
+          <span class="Close">&times;</span>
+        </h1>
+        <div class="Form-Inputs">
+          <p class="Field">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              id="InputPassword"
+            />
+            <i class="fa fa-lock"></i>
+          </p>
+        </div>
+        <button class="Password-Input-Button" id="InputPasswordBtn">
+          <span>Enter</span>
+        </button>
+      </div>
+    </div>
+
+    <script src="./JS/File_Protector.js" type="module"></script>
+  </body>
+</html>

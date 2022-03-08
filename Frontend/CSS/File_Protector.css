@@ -20,7 +20,7 @@
 }
 
 body {
-  background-image: url("../Resources/Images/Background_For_Passwords.svg");
+  background-image: url("../Resources/Images/Background-Files.svg");
   background-repeat: no-repeat;
   background-size: cover;
   display: grid;
@@ -103,13 +103,9 @@ body {
 }
 
 .Vertical {
-  height: 500px;
+  height: 777px;
   align-content: flex-start;
   transition: height 1s;
-}
-
-.Vertical-with-Analysed {
-  height: 777px;
 }
 
 .Password-Section {
@@ -122,7 +118,7 @@ body {
 
 .Functionality {
   display: flex;
-  background: rgba(131, 131, 131, 0.5);
+  background: rgba(34, 34, 34, 0.281);
   box-shadow: 0px 4px 42px rgba(0, 0, 0, 0.6);
   border-radius: 22px;
   flex-wrap: wrap;
@@ -210,87 +206,205 @@ body {
   transform: skewX(45deg) translateX(-150px);
 }
 
-.Password-Btn {
-  position: relative;
-  display: inline-block;
-  padding: 15px 20px;
-  border: 2px solid #74b1ff;
-  margin: 10px;
-  text-transform: uppercase;
-  background: linear-gradient(transparent, #0076);
-  font-weight: 600;
+/** Text*/
+
+.Sidebar-Heading {
+  font-size: 20px;
+  line-height: 36px;
+  color: #ffffff;
+  mix-blend-mode: soft-light;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 25px;
+  margin-left: 15px;
+  height: 25px;
+}
+
+.Sidebar-Subtext {
+  text-indent: 30px;
+  margin-top: 10px;
+}
+
+.Sidebar-Subtext a {
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.Selected {
+  text-decoration: underline;
+  text-decoration-color: rgb(213, 135, 135);
+  text-decoration-thickness: 5px;
+}
+
+.Defining-Text {
+  margin-bottom: 50px;
+  height: 0%;
   color: #fff;
-  transition: 0.5s;
-  transition-delay: 0s;
+  text-shadow: 0px 10px 11px rgb(0, 0, 0);
+}
+
+.Text {
+  color: greenyellow;
+  padding: 15px;
+  font-size: 25px;
+  text-shadow: 4px 3px 14px rgb(0, 0, 0);
+  text-align: center;
+}
+.Sub-Text {
+  font-family: "Montserrat-Thin", sans-serif;
+  font-size: 15px;
+  color: #fff;
+  animation: Fly-in 2s ease-out;
+}
+
+.Btn-Text {
+  position: relative;
+  z-index: 100;
+}
+
+.Sub-Heading {
+  color: yellow;
+  font-size: 15px;
+}
+
+.Result {
+  color: red;
+}
+
+.Tooltip {
+  opacity: 0;
+  width: 95px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -50px;
+  margin-bottom: 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 10px;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.Tooltip::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.5) transparent transparent transparent;
+}
+
+.Extra-Functionality li:hover .Tooltip {
+  transition: 2s ease-in;
+  opacity: 1;
+}
+
+.File-Uploader-Wrapper {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 22px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.File-Uploader-Wrapper form {
+  height: 200px;
+  width: 350px;
+  display: flex;
+  cursor: pointer;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 2px dashed #6990f2;
+}
+
+form :where(span, p) {
+  color: #6990f2;
+}
+form span {
+  font-size: 50px;
+}
+form p {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.Uploaded-Content .row {
+  margin-bottom: 10px;
+  background: #fff;
+  list-style: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: hidden;
+}
+.Uploaded-Content .row i {
+  color: #6990f2;
+  font-size: 30px;
+}
+.Uploaded-Content .details span {
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.Uploaded-Content {
+  max-height: 715px;
+  overflow-y: scroll;
+}
+.Uploaded-Content.onprogress {
+  max-height: 150px;
+}
+.Uploaded-Content::-webkit-scrollbar {
+  width: 0px;
+}
+.Uploaded-Content .row .content {
+  display: flex;
+  align-items: center;
+}
+.Uploaded-Content .row .details {
+  display: flex;
+  margin-left: 15px;
+  flex-direction: column;
+}
+.Uploaded-Content .row .details .size {
+  color: #404040;
+  font-size: 11px;
+}
+.Uploaded-Content i.fa-check {
+  font-size: 16px;
+}
+
+i.icon:before {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.Close-Btn {
   cursor: pointer;
 }
 
-.Password-Btn:hover {
-  transition-delay: 1.5s;
-  color: #000;
-  box-shadow: 0 0 10px #74b1ff, 0 0 20px #74b1ff, 0 0 40px #74b1ff,
-    0 0 80px #74b1ff, 0 0 160px #74b1ff;
+.ChangeBackground {
+  border: 2px #6990f2;
+  background-color: #6990f2;
 }
 
-.Password-Btn::before {
-  content: "";
-  position: absolute;
-  left: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 2px;
-  background: #74b1ff;
-  box-shadow: 5px -8px 0 #74b1ff, 5px 8px 0 #74b1ff;
-  transition: width 0.5s, left 0.5s, height 0.5s, box-shadow 0.5s;
-  transition-delay: 1s, 0.5s, 0s, 0s;
+.ChangeBackground :where(span, p) {
+  color: #fff;
 }
 
-.Password-Btn:hover::before {
-  width: 60%;
-  height: calc(100% + 5%);
-  left: -2px;
-  box-shadow: 5px 0 0 #74b1ff, 5px 0 0 #74b1ff;
-  transition-delay: 0s, 0.5s, 1s, 1s;
-}
-
-.Password-Btn::after {
-  content: "";
-  position: absolute;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 2px;
-  background: #74b1ff;
-  box-shadow: -5px -8px 0 #74b1ff, -5px 8px 0 #74b1ff;
-  transition: width 0.5s, right 0.5s, height 0.5s, box-shadow 0.5s;
-  transition-delay: 1s, 0.5s, 0s, 0s;
-}
-
-.Password-Btn:hover::after {
-  width: 60%;
-  height: calc(100% + 5%);
-  right: -2px;
-  box-shadow: -5px 0 0 #74b1ff, -5px 0 0 #74b1ff;
-  transition-delay: 0s, 0.5s, 1s, 1s;
-}
-
-.Modal {
-  position: fixed; /* Stay in place */
-  z-index: 100; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow-y: hidden; /* Enable scroll if needed */
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: block;
-  background-image: url("../Resources/Images/Background-Modal.svg");
-}
-
-.Edit-Modal {
+.Password-Modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 102; /* Sit on top */
@@ -298,8 +412,8 @@ body {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 .Form {
@@ -344,24 +458,6 @@ body {
 }
 
 .Form input[type="password"] {
-  font-size: 14px;
-  font-weight: 400;
-  padding: 10px 15px 10px 55px;
-  position: relative;
-  width: 300px;
-  margin-top: 15px;
-  height: 44px;
-  border: none;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
-  color: rgb(255, 255, 255);
-  transition: color 0.3s ease-out;
-}
-
-.Form input[type="username"] {
   font-size: 14px;
   font-weight: 400;
   padding: 10px 15px 10px 55px;
@@ -464,150 +560,4 @@ body {
   color: black;
   text-decoration: none;
   cursor: pointer;
-}
-
-/** Text*/
-
-.Sidebar-Heading {
-  font-size: 20px;
-  line-height: 36px;
-  color: #ffffff;
-  mix-blend-mode: soft-light;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-top: 25px;
-  margin-left: 15px;
-  height: 25px;
-}
-
-.Sidebar-Subtext {
-  text-indent: 30px;
-  margin-top: 10px;
-}
-
-.Sidebar-Subtext a {
-  color: rgba(255, 255, 255, 0.6);
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.Selected {
-  text-decoration: underline;
-  text-decoration-color: rgb(213, 135, 135);
-  text-decoration-thickness: 5px;
-}
-
-.Defining-Text {
-  margin-bottom: 50px;
-  height: 0%;
-  color: #fff;
-  text-shadow: 0px 10px 11px rgb(0, 0, 0);
-}
-
-.Text {
-  color: greenyellow;
-  padding: 15px;
-  font-size: 25px;
-  text-shadow: 4px 3px 14px rgb(0, 0, 0);
-  text-align: center;
-}
-.Sub-Text {
-  font-family: "Montserrat-Thin", sans-serif;
-  font-size: 15px;
-  color: #fff;
-  animation: Fly-in 2s ease-out;
-}
-
-.Btn-Text {
-  position: relative;
-  z-index: 100;
-}
-
-.Sub-Heading {
-  color: yellow;
-  font-size: 15px;
-}
-
-.Result {
-  color: red;
-}
-
-.Tooltip {
-  opacity: 0;
-  width: 100px;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -50px;
-  margin-bottom: 15px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  font-size: 10px;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.Tooltip::after {
-  content: " ";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.5) transparent transparent transparent;
-}
-
-.Extra-Functionality li:hover .Tooltip {
-  transition: 2s ease-in;
-  opacity: 1;
-}
-
-/** Miscellaneous*/
-
-.Sidebar-List {
-  margin-top: 15px;
-}
-
-.Password-Input {
-  width: 250px;
-  height: 30px;
-  border: none;
-  mix-blend-mode: screen;
-  box-shadow: 0px 4px 45px 10px #be2c84;
-  border-radius: 15px;
-  text-indent: 10px;
-}
-
-.Analyser {
-  background: linear-gradient(90.73deg, #db438c 2.83%, #9f18df 95.76%);
-}
-
-.Generator {
-  background: linear-gradient(90.73deg, #86db43 2.83%, #df1818 95.76%);
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  overflow: scroll;
-  overflow-y: hidden;
-}
-
-.Analyse {
-  width: 40%;
-}
-
-.Password-Generator-Output {
-  color: #000;
-  height: 100%;
-  width: 100%;
-  font-size: 20px;
-  z-index: 5;
-}
-.Analysed-Section {
-  display: none;
-}
-
-.Analysed-Section-Expanded {
-  display: block;
 }
