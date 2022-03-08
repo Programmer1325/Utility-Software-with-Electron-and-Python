@@ -83,14 +83,3 @@ function fetchFromFile(FilePath) {
       return Load;
     });
 }
-
-export {
-  removeElement,
-  removeAllChildNodes,
-  removeAllChildNodesExceptSpecified,
-  showElement,
-  waitForElm,
-  Modals,
-  formatBytes,
-  fetchFromFile,
-};

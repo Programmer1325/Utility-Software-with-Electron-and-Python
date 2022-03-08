@@ -1,16 +1,15 @@
 const { app, BrowserWindow, session, ipcMain } = require("electron");
-const { accessPython, ObjectToBeExported } = require("./Connections/Linker");
+const { accessPython } = require("./Connections/Linker");
 const { handleFileOpen } = require("./IPC_Functions");
 var path = require("path");
 
 const loadProcesses = ["CPU", "RAM", "Hard-Drive", "Network", "Battery"];
-let loadingScreen;
-let mainWindow;
+let loadingScreen, mainWindow;
 
 // * Create Window
 
 function createWindow() {
-  // * Create browser window
+  // * Create browser windows
   mainWindow = new BrowserWindow({
     width: 1000,
     height: 800,
@@ -30,6 +29,7 @@ function createWindow() {
     resizable: false,
   });
 
+  // * Load Files
   loadingScreen.loadFile("./Frontend/Loader.html");
   mainWindow.loadFile("./Frontend/Dashboard.html");
 
@@ -47,6 +47,7 @@ function createWindow() {
     });
   });
 
+  // * Show Loading Screen
   setTimeout(function () {
     loadingScreen.destroy();
     mainWindow.show();
@@ -54,16 +55,18 @@ function createWindow() {
 }
 
 // * On Ready
-
 app.whenReady().then(() => {
+  // * IPC Functions
   ipcMain.handle("openFileAndDirectoriesDialog", handleFileOpen);
 
+  // * Create Window
   createWindow();
   app.on("activate", function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
 
+// * When all windows are closed, quit
 app.on("window-all-closed", function () {
   if (process.platform !== "darwin") app.quit();
 });

@@ -1,28 +1,21 @@
 var { dialog } = require("electron");
 const fs = require("fs");
-
-function formatBytes(bytes, decimals = 2) {
-  if (bytes === 0) return "0 Bytes";
-
-  const k = 1024;
-  const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
-}
+const { formatBytes } = require("./Functions");
 
 async function handleFileOpen() {
+  // * Show Dialog
   const { canceled, filePaths } = await dialog.showOpenDialog({
     properties: ["openFile", "multiSelections"],
   });
+
+  // * Check if dialog cancelled
   if (canceled) {
     return;
   } else {
     var Paths = [];
     var Data = [];
 
+    // * For Each path, get size and stats and append it to the respective arrays
     filePaths.forEach((Path) => {
       Paths.push(Path);
 

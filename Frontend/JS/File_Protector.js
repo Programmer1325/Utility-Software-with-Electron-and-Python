@@ -1,5 +1,3 @@
-import { removeElement, removeAllChildNodes, removeAllChildNodesExceptSpecified, showElement, waitForElm, Modals, formatBytes } from "../../Functions";
-
 var Form = document.getElementById("File-Input-Form");
 var DefaultContent = document.getElementById("Default-content");
 var UploadedContentDiv = document.getElementById("Uploaded-Content");
@@ -46,6 +44,7 @@ async function FileHandler(filePaths) {
   setTimeout(() => {
     Data.forEach((ObjectWithStats) => {
       var PropertyName = `${ObjectWithStats.name}-Close`;
+      
       document.getElementById(PropertyName).addEventListener("click", () => {
         Data = Data.filter((item) => item.name !== ObjectWithStats.name);
         FilePathsArr = FilePathsArr.filter(

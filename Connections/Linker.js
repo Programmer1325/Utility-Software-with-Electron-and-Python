@@ -81,10 +81,6 @@ async function accessPython(
           );
           Container.innerText = results[0];
         } else if (whatToDo == "Initial Password") {
-          // removeManagerAndRecreate();
-
-          // const Manager = document.getElementById("Manager");
-
           if (results[0] === "Wrong Password") {
             return resolve("Wrong Password");
           } else {
@@ -92,28 +88,17 @@ async function accessPython(
               ObjectForFinder: JSON.parse(results[0]),
               MasterPassword: SecondParameter,
             };
-
             return resolve(ObjectToBeExported);
-
-            // document.getElementById("Delete-Key").addEventListener("click", () => {
-            //   accessPython("Delete Key", MasterPassword, label);
-            // });
-
-            // Finder.on("leaf-selected", function (item) {
-            //   label = item["label"];
-            // });
           }
         } else if (whatToDo == "Read Key") {
           UsernameAndPassword = JSON.parse(results[0])[0];
           if (FourthParameter == "Username") {
             var Username = UsernameAndPassword[FourthParameter];
             clipboard.writeText(Username);
-
             Notify("Username Copied");
           } else if (FourthParameter == "Password") {
             var Password = UsernameAndPassword[FourthParameter];
             clipboard.writeText(Password);
-
             Notify("Password Copied");
           }
         } else if (

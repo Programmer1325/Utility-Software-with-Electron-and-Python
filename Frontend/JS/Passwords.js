@@ -6,7 +6,6 @@ document
   .addEventListener("click", () => {
     var InputValueOfPasswordInitial =
       document.getElementById("Initial-Password").value;
-    // console.log(InputValueOfPasswordInitial)
     if (InputValueOfPasswordInitial == "") {
       Notify("Please Enter a Password");
     } else {

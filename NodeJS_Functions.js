@@ -1,14 +1,18 @@
-const { accessPython } = require("./Connections/Linker");
 const { contextBridge, clipboard, ipcRenderer } = require("electron");
 const DOMPurify = require("dompurify");
 const finder = require("finderjs");
 const Icons = require("@exuanbo/file-icons-js");
 const toastify = require("./Frontend/JS/Toastify.js");
 
-function hideElement(element) {
-  element.style.display = "none";
-}
+const { accessPython } = require("./Connections/Linker");
+const {
+  hideElement,
+  waitForElm,
+  fetchFromFile,
+  removeAllChildNodes,
+} = require("./Functions");
 
+// * Text for appending to HTML
 var createModalText = `<div class="Form">
                         <h1>
                           Create Key
@@ -96,12 +100,36 @@ var editModalText = `<div class="Form">
                       </button>
                       </div>`;
 
+var ModalForEncryptingAndDecryptingFiles = `<div class="Form">
+                                              <h1>
+                                                Enter Password
+                                                <span class="Close">&times;</span>
+                                              </h1>
+                                              <div class="Form-Inputs">
+                                                <p class="Field">
+                                                  <input
+                                                    type="password"
+                                                    name="password"
+                                                    placeholder="Password"
+                                                    id="InputPassword"
+                                                  />
+                                                  <i class="fa fa-lock"></i>
+                                                </p>
+                                              </div>
+                                              <button class="Password-Input-Button" id="InputPasswordBtn">
+                                                <span>Enter</span>
+                                              </button>
+                                            </div>`;
+
+// * Valid Channels for IPC
 let validChannels = ["Initial Password", "Finder Content"];
 
+// * Sanitizes HTML Text content
 const Sanitizer = trustedTypes.createPolicy("SecureContent", {
   createHTML: (input) => DOMPurify.sanitize(input),
 });
 
+// * Functions
 function TextToHTMLElement(Text, Parent) {
   if (typeof trustedTypes !== "undefined") {
     var SanitizedElement = Sanitizer.createHTML(Text);
@@ -109,27 +137,8 @@ function TextToHTMLElement(Text, Parent) {
   }
 }
 
-function waitForElm(selector) {
-  return new Promise((resolve) => {
-    if (document.querySelector(selector)) {
-      return resolve(document.querySelector(selector));
-    }
-
-    const observer = new MutationObserver((mutations) => {
-      if (document.querySelector(selector)) {
-        resolve(document.querySelector(selector));
-        observer.disconnect();
-      }
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
-  });
-}
-
 function InitializeFinderFunction(ObjectForFinder) {
+  // * Delete Manager and recreate it with Finder.JS
   const ManagerWithPreviousContent = document.getElementById("Manager");
 
   const newElement = document.createElement("div");
@@ -172,21 +181,7 @@ function Modals(ModalID, CloseID) {
   };
 }
 
-function removeAllChildNodes(ID) {
-  while (ID.hasChildNodes()) {
-    ID.removeChild(ID.firstChild);
-  }
-}
-
-function fetchFromFile(FilePath) {
-  return fetch(FilePath)
-    .then((response) => response.text())
-    .then((text) => {
-      Load = text.split("\n").slice(0, -1);
-      return Load;
-    });
-}
-
+// * Context Bridge
 contextBridge.exposeInMainWorld("customFunctions", {
   api: {
     send: (channel, data) => {
@@ -196,31 +191,24 @@ contextBridge.exposeInMainWorld("customFunctions", {
     },
     receive: (channel, func) => {
       if (validChannels.includes(channel)) {
-        // Deliberately strip event as it includes `sender`
         ipcRenderer.on(channel, (event, ...args) => func(...args));
       }
     },
   },
   Python: {
     generatePassword: () => {
-      // * Create Password
       accessPython("Create Password");
     },
     getSizeofSystemFiles: () => {
-      // * Get Size of Junk
       accessPython("Get Size of Junk");
     },
-    analysePassword: (inputValue) => {
-      // * Check Password
-      accessPython("Password Checker", inputValue);
-    },
+    analysePassword: (inputValue) => {},
     filesFunctionality: (FunctionToExecute, Password, PathsObj) => {
       accessPython(FunctionToExecute, Password, PathsObj);
     },
   },
   sysFuncs: {
     copyText: (textDiv) => {
-      // * Copy Text
       var TextID = document.getElementById(textDiv);
       var Text = TextID.innerText;
 
@@ -269,31 +257,12 @@ contextBridge.exposeInMainWorld("customFunctions", {
       var DefaultContent = document.getElementById("Default-content");
       var PasswordModalSelector = document.getElementById("PasswordModalID");
 
-      // * Create Modal
-      var Modal = `<div class="Form">
-                      <h1>
-                        Enter Password
-                        <span class="Close">&times;</span>
-                      </h1>
-                      <div class="Form-Inputs">
-                        <p class="Field">
-                          <input
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            id="InputPassword"
-                          />
-                          <i class="fa fa-lock"></i>
-                        </p>
-                      </div>
-                      <button class="Password-Input-Button" id="InputPasswordBtn">
-                        <span>Enter</span>
-                      </button>
-                    </div>`;
-
-      TextToHTMLElement(Modal, PasswordModalSelector);
-
+      TextToHTMLElement(
+        ModalForEncryptingAndDecryptingFiles,
+        PasswordModalSelector
+      );
       var Paths = [];
+
       try {
         var Data = filePaths[0];
         Paths.push(filePaths[1]);
@@ -333,8 +302,7 @@ contextBridge.exposeInMainWorld("customFunctions", {
       return Paths;
     },
     InitialPassword: (Password) => {
-      var x = accessPython("Initial Password", Password);
-      return x;
+      return accessPython("Initial Password", Password);
     },
     InitializeFinder: (ObjectForFinder, MasterPassword) => {
       var Finder = InitializeFinderFunction(ObjectForFinder);
@@ -377,7 +345,7 @@ contextBridge.exposeInMainWorld("customFunctions", {
         }
       });
 
-      // * Create Password
+      // * Create Key
       document.getElementById("Create-Key").addEventListener("click", () => {
         var CreateModalID = document.getElementById("CreateModalID");
 
