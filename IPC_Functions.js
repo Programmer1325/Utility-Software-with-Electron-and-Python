@@ -1,6 +1,6 @@
 var { dialog } = require("electron");
 const fs = require("fs");
-const { formatBytes } = require("./Functions");
+const { formatBytes } = require("./Functions_NodeJS");
 
 async function handleFileOpen() {
   // * Show Dialog

@@ -1,7 +1,7 @@
 const { app, BrowserWindow, session, ipcMain } = require("electron");
 const { accessPython } = require("./Connections/Linker");
-const { handleFileOpen } = require("./IPC_Functions");
 var path = require("path");
+const { handleFileOpen } = require("./IPC_Functions.js");
 
 const loadProcesses = ["CPU", "RAM", "Hard-Drive", "Network", "Battery"];
 let loadingScreen, mainWindow;

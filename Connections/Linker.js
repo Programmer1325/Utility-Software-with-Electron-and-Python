@@ -60,7 +60,7 @@ async function accessPython(
 
         // * Using the result
 
-        if (whatToDo == "Password Checker") {
+        if (whatToDo == "Analyse Password") {
           let ScoreContainer = document.getElementById("Score");
           ScoreContainer.innerText = results[0];
 

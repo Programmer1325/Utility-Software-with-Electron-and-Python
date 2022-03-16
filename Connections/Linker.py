@@ -78,7 +78,7 @@ if Argument == 'Task Manager':
 
         print('No Result')
 
-elif Argument == 'Password Checker':
+elif Argument == 'Analyse Password':
     from Python.Modules.Password_Checker_And_Generator import Password
 
     with Password() as Password_Checker:

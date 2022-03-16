@@ -5,12 +5,7 @@ const Icons = require("@exuanbo/file-icons-js");
 const toastify = require("./Frontend/JS/Toastify.js");
 
 const { accessPython } = require("./Connections/Linker");
-const {
-  hideElement,
-  waitForElm,
-  fetchFromFile,
-  removeAllChildNodes,
-} = require("./Functions");
+const {hideElement, waitForElm, fetchFromFile, removeAllChildNodes} = require('./Functions_NodeJS');
 
 // * Text for appending to HTML
 var createModalText = `<div class="Form">
@@ -202,7 +197,9 @@ contextBridge.exposeInMainWorld("customFunctions", {
     getSizeofSystemFiles: () => {
       accessPython("Get Size of Junk");
     },
-    analysePassword: (inputValue) => {},
+    analysePassword: (inputValue) => {
+      accessPython("Analyse Password", inputValue);
+    },
     filesFunctionality: (FunctionToExecute, Password, PathsObj) => {
       accessPython(FunctionToExecute, Password, PathsObj);
     },

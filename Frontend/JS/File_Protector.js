@@ -5,6 +5,8 @@ var UploadedContentDiv = document.getElementById("Uploaded-Content");
 var FilePathsArr = [];
 var Data = [];
 
+import { removeElement, Modals, removeAllChildNodes,  } from "./Functions";
+
 function AddOrRemoveShakeClass(AddOrRemove) {
   if (AddOrRemove === "add") {
     Form.classList.add("ChangeBackground");
@@ -44,7 +46,7 @@ async function FileHandler(filePaths) {
   setTimeout(() => {
     Data.forEach((ObjectWithStats) => {
       var PropertyName = `${ObjectWithStats.name}-Close`;
-      
+
       document.getElementById(PropertyName).addEventListener("click", () => {
         Data = Data.filter((item) => item.name !== ObjectWithStats.name);
         FilePathsArr = FilePathsArr.filter(
